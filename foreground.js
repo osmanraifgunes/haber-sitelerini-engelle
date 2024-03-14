@@ -1,4 +1,4 @@
-var banlist = [
+var clickBaitslist = [
     'yenisafak.com',
     'hurriyet.com',
     'milliyet.com',
@@ -29,28 +29,26 @@ var banlist = [
 ]
 
 
-function myfunc() {
-
-
+function clearClickBaits() {
     chrome.storage.sync.get('isBanEnabled').then((isBanEnabled) => {
         if (!isBanEnabled.isBanEnabled) {
             return;
         }
-
         var elements = [...document.querySelectorAll("#rso > div")];
-
-        for (let i = 0; i < elements.length; i++) {
-            for (let j = 0; j < banlist.length; j++) {
-                if (elements[i].innerHTML.indexOf(banlist[j]) > -1) {
-                    elements[i].remove();
-                    j = banlist.length;
+        chrome.storage.sync.get('clickBaitslist').then((cblist) => {
+            if (cblist.clickBaitslist) {
+                clickBaitslist = cblist.clickBaitslist;
+            }
+            for (let i = 0; i < elements.length; i++) {
+                for (let j = 0; j < clickBaitslist.length; j++) {
+                    if (elements[i].innerHTML.indexOf(clickBaitslist[j]) > -1) {
+                        elements[i].remove();
+                        j = clickBaitslist.length;
+                    }
                 }
             }
-        }
-
+        });
     });
-
 }
 
-myfunc();
-
+clearClickBaits();
