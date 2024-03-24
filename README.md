@@ -1,6 +1,7 @@
 # haber-sitelerini-engelle
 Google arama sonuçlarından haber sitelerini kaldırır
 
+Eklentiyi kurmak için : https://chromewebstore.google.com/detail/haber-sitelerini-engelle/aabbpallapgfmlcfdnhnhapeeembanlk?hl=en&authuser=0
 
 - _Engellenmiş olan haber siteleri_:
     - yenisafak.com
